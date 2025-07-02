@@ -17,25 +17,28 @@ public abstract class Conta {
 	}
 	
 	public void depositar(double valor) {
-		this.saldo += valor;	
+		this.saldo += valor;
+		System.out.printf("Conta: %d - Depósito realizado.\n\n", this.getNumero());
 	}
 
 	public void sacar(double valor) {
 		if (this.saldo >= valor){
 			this.saldo -= valor;
+			System.out.printf("Conta: %d - Saque realizado.\n\n", this.getNumero());
 		}
 		else {
-			System.out.println("Saldo insuficiente.");
+			System.out.printf("Conta: %d - Saque não realizado, saldo insuficiente.\n\n", this.getNumero());
 		}
 	}
 
 	public void transfeir(Conta favorecido, double valor) {
 		if (this.saldo >= valor){
 			this.saldo -= valor;
+			System.out.printf("Transferencia realizada. %s transferiu %.2f para %s\n", this.getProprietario().getNome(), valor, favorecido.getProprietario().getNome());
 			favorecido.depositar(valor);
 		}
 		else {
-			System.out.println("Saldo insuficiente.");
+			System.out.printf("Conta: %d - Transferência negada, saldo insuficiente.\n\n", this.getNumero());
 		}
 	}
 	
@@ -64,7 +67,7 @@ public abstract class Conta {
 		System.out.println(String.format("Agencia: %d", this.agencia));
 		System.out.println(String.format("Numero: %d", this.numero));
 		System.out.println(String.format("Saldo: %.2f", this.saldo));
-		System.out.println(String.format("Titular: %s", this.titular.getNome()));
+		System.out.println(String.format("Titular: %s\n", this.titular.getNome()));
 
 	}
 	public abstract void imprimirExtrato();
