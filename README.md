@@ -1,2 +1,2 @@
 # sistema-bancario
-Implementação de um banco simplificado para fins didáticos
+Implementação de um banco digiatal simplificado para fins didáticos
